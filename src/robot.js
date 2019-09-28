@@ -1,3 +1,5 @@
+const { clockwise, anticlockwise } = require('./orientation')
+
 class Robot {
   constructor(x, y, orientation, grid) {
     this.x = x
@@ -14,10 +16,10 @@ class Robot {
 
     switch (instruction) {
       case 'L':
-        this._turnAnticlockwise()
+        this.o = anticlockwise(this.o)
         break
       case 'R':
-        this._turnClockwise()
+        this.o = clockwise(this.o)
         break
       case 'F':
         this._forward()
@@ -52,14 +54,6 @@ class Robot {
       this.isLost = true
       this.grid.addSmell(squareInFront)
     }
-  }
-
-  _turnAnticlockwise() {
-    this.o = {x: -this.o.y, y: this.o.x}
-  }
-
-  _turnClockwise() {
-    this.o = {x: this.o.y, y: -this.o.x}
   }
 }
 
