@@ -40,12 +40,17 @@ class Robot {
       y: this.y + this.o.y
     }
 
+    if (this.grid.isSmell(squareInFront)) {
+      return
+    }
+
     if (this.grid.contains(squareInFront)) {
       this.x = squareInFront.x
       this.y = squareInFront.y
     }
     else {
       this.isLost = true
+      this.grid.addSmell(squareInFront)
     }
   }
 
