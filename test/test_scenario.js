@@ -18,6 +18,18 @@ describe('Scenario', function() {
     scenario.addRobotLines('1 1 E', 'FRF')
     const output = scenario.execute()
 
-    assert.deepEqual('2 0 S', output)
+    assert.deepEqual('2 0 S', output[0])
+  })
+
+  it('should move two robots', function() {
+    const scenario = new Scenario()
+
+    scenario.addGridLine('5 3')
+    scenario.addRobotLines('1 1 E', 'F')
+    scenario.addRobotLines('1 1 E', 'LF')
+    const output = scenario.execute()
+
+    assert.deepEqual('2 1 E', output[0])
+    assert.deepEqual('1 2 N', output[1])
   })
 })
