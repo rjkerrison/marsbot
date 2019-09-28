@@ -26,22 +26,19 @@ class Robot {
     }
   }
 
-  move_all(instructions, verbose) {
+  move_all(instructions) {
     for (var l of instructions) {
       this.move(l)
       if (this.isLost){
         break
-      }
-      if (verbose) {
-        console.log([l, this.x, this.y, this.o])
       }
     }
   }
 
   _forward() {
     const squareInFront = {
-      x: this.x + this.o[0],
-      y: this.y + this.o[1]
+      x: this.x + this.o.x,
+      y: this.y + this.o.y
     }
 
     if (isOnGrid(squareInFront)) {
@@ -53,14 +50,12 @@ class Robot {
     }
   }
 
-  _turnAnticlockwise(orientation) {
-    this.o.x = -this.o.y
-    this.o.y = this.o.x
+  _turnAnticlockwise() {
+    this.o = {x: -this.o.y, y: this.o.x}
   }
 
-  _turnClockwise(orientation) {
-    this.o.x = this.o.y
-    this.o.y = -this.o.x
+  _turnClockwise() {
+    this.o = {x: this.o.y, y: -this.o.x}
   }
 }
 
