@@ -1,5 +1,5 @@
 const clockwise = ({x, y}) => ({x: y, y: -x})
-const anticlockwise = ({x, y}) => ({x: y, y: -x})
+const anticlockwise = ({x, y}) => ({x: -y, y: x})
 const getVector = (x) => compassPoints[x]
 
 function getCompass({x, y}) {
