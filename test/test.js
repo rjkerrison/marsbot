@@ -1,8 +1,11 @@
-const Robot = require('../src/robot.js')
+const Robot = require('../src/robot')
+const Grid = require('../src/grid')
 const assert = require('assert')
 
 describe('Robot', function() {
   describe('?', function () {
+    const grid = new Grid(5, 3)
+
     it('should pass the sample data', function () {
       const robots = [
         {robot: makeRobot(1, 1, 'E'), instructions: 'RFRFRFRF'},
@@ -49,17 +52,18 @@ describe('Robot', function() {
       assert.equal(1, robot.x)
       assert.equal(1, robot.y)
     })
+
+    function makeRobot(x, y, p) {
+      const o = orientations[p]
+      return new Robot(x, y, {...o}, grid)
+    }
+
+    const orientations = {
+      'N': {x: 0, y: 1},
+      'E': {x: 1, y: 0},
+      'S': {x: 0, y: -1},
+      'W': {x: -1, y: 0}
+    }
   })
 })
 
-function makeRobot(x, y, p) {
-  const o = orientations[p]
-  return new Robot(x, y, {...o})
-}
-
-const orientations = {
-  'N': {x: 0, y: 1},
-  'E': {x: 1, y: 0},
-  'S': {x: 0, y: -1},
-  'W': {x: -1, y: 0}
-}
