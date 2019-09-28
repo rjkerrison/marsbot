@@ -1,11 +1,10 @@
-const grid = [5, 3]
-
 class Robot {
-  constructor(x, y, orientation) {
+  constructor(x, y, orientation, grid) {
     this.x = x
     this.y = y
     this.o = orientation
     this.isLost = false
+    this.grid = grid
   }
 
   move(instruction) {
@@ -41,7 +40,7 @@ class Robot {
       y: this.y + this.o.y
     }
 
-    if (isOnGrid(squareInFront)) {
+    if (this.grid.contains(squareInFront)) {
       this.x = squareInFront.x
       this.y = squareInFront.y
     }
@@ -57,13 +56,6 @@ class Robot {
   _turnClockwise() {
     this.o = {x: this.o.y, y: -this.o.x}
   }
-}
-
-function isOnGrid(square) {
-  return square.x >= 0
-    && square.x <= grid[0]
-    && square.y >= 0
-    && square.y <= grid[1]
 }
 
 module.exports = Robot
