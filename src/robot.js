@@ -1,17 +1,3 @@
-function turnClockwise(orientation) {
-  return [
-    orientation[1],
-    -orientation[0]
-  ]
-}
-
-function turnAnticlockwise(orientation) {
-  return [
-    -orientation[1],
-    orientation[0]
-  ]
-}
-
 const grid = [5, 3]
 
 class Robot {
@@ -29,10 +15,10 @@ class Robot {
 
     switch (instruction) {
       case 'L':
-        this.o = turnAnticlockwise(this.o)
+        this._turnAnticlockwise()
         break
       case 'R':
-        this.o = turnClockwise(this.o)
+        this._turnClockwise()
         break
       case 'F':
         this._forward()
@@ -65,6 +51,16 @@ class Robot {
     else {
       this.isLost = true
     }
+  }
+
+  _turnAnticlockwise(orientation) {
+    this.o.x = -this.o.y
+    this.o.y = this.o.x
+  }
+
+  _turnClockwise(orientation) {
+    this.o.x = this.o.y
+    this.o.y = -this.o.x
   }
 }
 
