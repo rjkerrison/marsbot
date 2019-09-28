@@ -1,5 +1,7 @@
 const Robot = require('../src/robot')
 const Grid = require('../src/grid')
+const Orientation = require('../src/orientation')
+
 const assert = require('assert')
 
 describe('Robot', function() {
@@ -20,17 +22,17 @@ describe('Robot', function() {
       assert.ok(!robots[0].robot.isLost, '1st Robot lost')
       assert.equal(1, robots[0].robot.x, '1st Robot x')
       assert.equal(1, robots[0].robot.y, '1st Robot y')
-      assert.deepEqual(orientations['E'], robots[0].robot.o, '1st Robot orientation')
+      assert.deepEqual(Orientation.getVector('E'), robots[0].robot.o, '1st Robot orientation')
 
       assert.ok(robots[1].robot.isLost, '2nd Robot lost')
       assert.equal(3, robots[1].robot.x, '2nd Robot x')
       assert.equal(3, robots[1].robot.y, '2nd Robot y')
-      assert.deepEqual(orientations['N'], robots[1].robot.o, '2nd Robot orientation')
+      assert.deepEqual(Orientation.getVector('N'), robots[1].robot.o, '2nd Robot orientation')
 
       assert.ok(!robots[2].robot.isLost, '3rd Robot lost')
       assert.equal(2, robots[2].robot.x, '3rd Robot x')
       assert.equal(3, robots[2].robot.y, '3rd Robot y')
-      assert.deepEqual(orientations['S'], robots[2].robot.o, '3rd Robot orientation')
+      assert.deepEqual(Orientation.getVector('S'), robots[2].robot.o, '3rd Robot orientation')
     })
 
     it('should pass simple forward case', function () {
@@ -54,15 +56,8 @@ describe('Robot', function() {
     })
 
     function makeRobot(x, y, p) {
-      const o = orientations[p]
+      const o = Orientation.getVector(p)
       return new Robot(x, y, {...o}, grid)
-    }
-
-    const orientations = {
-      'N': {x: 0, y: 1},
-      'E': {x: 1, y: 0},
-      'S': {x: 0, y: -1},
-      'W': {x: -1, y: 0}
     }
   })
 })
