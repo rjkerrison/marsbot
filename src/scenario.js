@@ -21,7 +21,7 @@ class Scenario {
 
   addRobotLines(position, commands) {
     const [x_string, y_string, c] = position.split(' ')
-    const [x, y] = this._applyGridLimits(...intFromString(x_string, y_string))
+    const [x, y] = this._applyRobotLimits(...intFromString(x_string, y_string))
 
     const robot = new Robot(x, y, {...getVector(c)}, this.grid)
     commands = this._applyCommandsLimit(commands)
@@ -47,6 +47,15 @@ class Scenario {
       y = Math.min(y, this.maxNorth)
     }
     return [x, y]
+  }
+
+  _applyRobotLimits(x, y) {
+    if (this.grid) {
+      return [
+        Math.min(x, this.grid.x),
+        Math.min(y, this.grid.y)
+      ]
+    }
   }
 
   _applyCommandsLimit(commands) {
