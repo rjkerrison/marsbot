@@ -48,4 +48,14 @@ describe('Scenario', function() {
 
     assert.deepEqual(new Grid(7, 10), scenario.grid)
   })
+
+  it('should start robots on the grid', function() {
+    const scenario = new Scenario()
+
+    scenario.addGridLine('10 10')
+    scenario.addRobotLines('12 12 E', '')
+    const output = scenario.execute()
+
+    assert.deepEqual('10 10 E', output[0])
+  })
 })
