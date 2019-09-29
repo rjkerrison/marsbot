@@ -32,4 +32,20 @@ describe('Scenario', function() {
     assert.deepEqual('2 1 E', output[0])
     assert.deepEqual('1 2 N', output[1])
   })
+
+  it('should obey maxNorth limit for grid', function() {
+    const scenario = new Scenario({maxNorth: 5})
+
+    scenario.addGridLine('3 10')
+
+    assert.deepEqual(new Grid(3, 5), scenario.grid)
+  })
+
+  it('should obey maxEast limit', function() {
+    const scenario = new Scenario({maxEast: 7})
+
+    scenario.addGridLine('10 10')
+
+    assert.deepEqual(new Grid(7, 10), scenario.grid)
+  })
 })
