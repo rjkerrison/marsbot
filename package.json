@@ -4,7 +4,8 @@
   "description": "Mars bot game engine",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js"
   },
   "author": "Robin James Kerrison",
   "license": "ISC",
