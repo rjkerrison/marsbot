@@ -58,4 +58,14 @@ describe('Scenario', function() {
 
     assert.deepEqual('10 10 E', output[0])
   })
+
+  it('should limit robot commands', function() {
+    const scenario = new Scenario({maxCommands: 5})
+
+    scenario.addGridLine('10 10')
+    scenario.addRobotLines('0 0 N', 'F'.repeat(10))
+    const output = scenario.execute()
+
+    assert.deepEqual('0 5 N', output[0])
+  })
 })
