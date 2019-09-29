@@ -1,0 +1,5 @@
+{
+  "maxCommands": 100,
+  "maxNorth": 50,
+  "maxEast": 50
+}

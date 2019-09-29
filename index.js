@@ -6,7 +6,7 @@ const lineReader = readline.createInterface({
   input: require('fs').createReadStream(__dirname + '/instructions.txt')
 })
 
-const scenario = new Scenario()
+const scenario = new Scenario(require('./config.json'))
 
 let lineCounter = 0
 const robotLines = []

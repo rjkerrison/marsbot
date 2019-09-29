@@ -3,8 +3,11 @@ const Robot = require('./robot')
 const { getVector, getCompass } = require('./orientation')
 
 class Scenario {
-  constructor() {
+  constructor({maxNorth, maxEast, maxCommands}) {
     this.robots = []
+    this.maxNorth = maxNorth
+    this.maxEast = maxEast
+    this.maxCommands = maxCommands
   }
 
   addGridLine(line) {
