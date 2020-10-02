@@ -10,6 +10,6 @@
   "author": "Robin James Kerrison",
   "license": "ISC",
   "devDependencies": {
-    "mocha": "^6.2.0"
+    "mocha": "^8.1.3"
   }
 }
