@@ -60,7 +60,7 @@ class Scenario {
 
   _applyCommandsLimit(commands) {
     if (this.maxCommands) {
-      return commands.substring(this.maxCommands)
+      return commands.substring(0, this.maxCommands)
     }
     return commands
   }
